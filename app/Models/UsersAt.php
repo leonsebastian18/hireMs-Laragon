@@ -7,11 +7,10 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class User
+ * Class UsersAt
  * 
  * @property int $id
  * @property string $name
@@ -21,16 +20,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * 
- * @property Collection|Candidate[] $candidates
- * @property Collection|Notification[] $notifications
- * @property Collection|Role[] $roles
  *
  * @package App\Models
  */
-class User extends Model
+class UsersAt extends Model
 {
-	protected $table = 'users';
+	protected $table = 'users_ats';
 
 	protected $casts = [
 		'email_verified_at' => 'datetime'
@@ -48,19 +43,4 @@ class User extends Model
 		'password',
 		'remember_token'
 	];
-
-	public function candidates()
-	{
-		return $this->hasMany(Candidate::class);
-	}
-
-	public function notifications()
-	{
-		return $this->hasMany(Notification::class);
-	}
-
-	public function roles()
-	{
-		return $this->belongsToMany(Role::class);
-	}
 }
