@@ -3,6 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
+use App\Http\Controllers\API\CandidateController;
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
+
+// Agrega esta ruta para tus APIs de Candidate
+Route::apiResource('candidates', CandidateController::class);
+
