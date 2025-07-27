@@ -1,66 +1,38 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-/**
- * Class User
- * 
- * @property int $id
- * @property string $name
- * @property string $email
- * @property Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * 
- * @property Collection|Candidate[] $candidates
- * @property Collection|Notification[] $notifications
- * @property Collection|Role[] $roles
- *
- * @package App\Models
- */
-class User extends Model
+
+class User extends Authenticatable implements MustVerifyEmail
 {
-	protected $table = 'users';
+    use HasFactory, Notifiable;
 
-	protected $casts = [
-		'email_verified_at' => 'datetime'
-	];
+    /**
+     * Los atributos que se pueden asignar masivamente.
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
-	protected $hidden = [
-		'password',
-		'remember_token'
-	];
+    /**
+     * Los atributos que deberían estar ocultos para arrays.
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'remember_token'
-	];
-
-	public function candidates()
-	{
-		return $this->hasMany(Candidate::class);
-	}
-
-	public function notifications()
-	{
-		return $this->hasMany(Notification::class);
-	}
-
-	public function roles()
-	{
-		return $this->belongsToMany(Role::class);
-	}
+    /**
+     * Los atributos que deben ser casteados.
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
