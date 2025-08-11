@@ -1,23 +1,3 @@
-//redireccionamiento sigin -> ATSHire-Ms
-document.addEventListener('DOMContentLoaded', function () {
-    const continueBtn = document.querySelector('.button-login');
-    if (continueBtn) {
-      continueBtn.addEventListener('click', function () {
-        window.location.href = 'ATSHire-Ms.html';
-      });
-    }
-  });
-
-//redireccionamiento createAccount -> ATSHire-Ms
-document.addEventListener('DOMContentLoaded', function () {
-    const continueBtn = document.querySelector('.create-register');
-    if (continueBtn) {
-      continueBtn.addEventListener('click', function () {
-        window.location.href = 'ATSHire-Ms.html';
-      });
-    }
-  });
-
 //Uso de la librería Chart.js
   // Colores de tu paleta
   const mainColor = '#5985E9';
