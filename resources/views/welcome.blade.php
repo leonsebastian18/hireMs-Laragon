@@ -33,10 +33,10 @@
         <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">Request a demonstration</button>
 
         <!-- Imágenes del ATS -->
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mt-8">
-            <div class="flex justify-center">
-                <img src="./imagenes/Index.png" alt="Demo_index" class="rounded-lg shadow-md w-[366px] h-[366px] md:w-[485.33px] md:h-[485.33px]">
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+            <img src="./imagenes/Jobposting.png" alt="ATS interface" class="rounded-lg shadow-md w-[366px] h-[366px] md:w-[485.33px] md:h-[485.33px]">
+            <img src="./imagenes/Funcionallity.png" alt="Functionality" class="rounded-lg shadow-md w-[366px] h-[366px] md:w-[485.33px] md:h-[485.33px]">
+            <img src="./imagenes/Dashboard.png" alt="Dashboard" class="rounded-lg shadow-md w-[366px] h-[366px] md:w-[485.33px] md:h-[485.33px]">
         </div>
     </main>
 
