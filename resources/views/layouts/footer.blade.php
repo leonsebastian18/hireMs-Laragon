@@ -19,9 +19,9 @@
             <div>
                 <h4 class="font-bold mb-2">Company</h4>
                 <ul>
-                    <li>Employment</li>
-                    <li>Customers</li>
-                    <li>Contact</li>
+                    <li><a href="#">Employment</a></li>
+                    <li><a href="#">Customers</a></li>
+                    <li><a href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>
             <div>
