@@ -27,7 +27,7 @@
             <div>
                 <h4 class="font-bold mb-2">Legal</h4>
                 <ul>
-                    <li>Privacy Policy</li>
+                    <li><a href="{{route('privacy_policy')}}">Privacy Policy</a></li>
                     <li><a href="{{route('cookies')}}">Cookie Policy</a></li>
                     <li>Safety and security</li>
                 </ul>

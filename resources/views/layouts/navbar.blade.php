@@ -4,7 +4,7 @@
 <header class="bg-[#0f172a] text-white">
   <div class="container mx-auto flex justify-between items-center p-4" x-data="{ openMenu: false, openProduct: false, openResources: false }">
     <!-- Logo -->
-    <a href="./index.html">
+    <a href="/">
       <img src="../imagenes/logo_mobile.JPG" alt="Logo-mobile" class="w-12 h-14 md:hidden rounded-lg"/>
       <img src="../imagenes/logo.JPG" alt="logo-desktop" class="hidden md:block static -mt-9 -mb-10 w-20">
     </a>

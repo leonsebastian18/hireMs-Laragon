@@ -13,6 +13,8 @@ Route::view('/contact', 'layouts.contact')->name('contact');
 
 Route::view('/cookies', 'layouts.cookies')->name('cookies');
 
+Route::view('/privacy', 'layouts.privacy_policy')->name('privacy_policy');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
