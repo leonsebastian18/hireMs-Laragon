@@ -11,6 +11,8 @@ Route::get('/', function () {
 
 Route::view('/contact', 'layouts.contact')->name('contact');
 
+Route::view('/cookies', 'layouts.cookies')->name('cookies');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
