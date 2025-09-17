@@ -21,11 +21,11 @@
     @include('layouts.navbar')
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-pink-50 to-yellow-50 py-20">
+    <section class="bg-gradient-to-r from-blue-50 to-gray-100 py-20">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-            Trusted by <span class="text-pink-600">185,000+ recruiters</span> worldwide
+            Trusted by <span class="text-blue-600">185,000+ recruiters</span> worldwide
           </h1>
           <p class="mt-6 text-lg text-gray-700">
             Thousands of companies use <strong>Hire.Ms</strong> to attract, retain and hire the best talent.
@@ -96,19 +96,19 @@
     </section>
 
     <!-- Metrics -->
-    <section class="py-20 bg-gradient-to-r from-pink-50 to-yellow-50">
+    <section class="py-20 bg-gradient-to-r from-blue-50 to-gray-100">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 text-center">
         <div class="grid md:grid-cols-3 gap-12">
           <div>
-            <p class="text-4xl font-bold text-pink-600">845,000+</p>
+            <p class="text-4xl font-bold text-blue-600">845,000+</p>
             <p class="text-gray-700 mt-2">Successful hires</p>
           </div>
           <div>
-            <p class="text-4xl font-bold text-pink-600">185,000+</p>
+            <p class="text-4xl font-bold text-blue-600">185,000+</p>
             <p class="text-gray-700 mt-2">Recruiters using Hire.Ms</p>
           </div>
           <div>
-            <p class="text-4xl font-bold text-pink-600">10,000+</p>
+            <p class="text-4xl font-bold text-blue-600">10,000+</p>
             <p class="text-gray-700 mt-2">Companies trust us</p>
           </div>
         </div>

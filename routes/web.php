@@ -23,6 +23,8 @@ Route::view('/price', 'layouts.price')->name('price');
 
 Route::view('/help', 'layouts.help')->name('help');
 
+Route::view('/associates', 'layouts.associates')->name('associates');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -13,7 +13,7 @@
                 <h4 class="font-bold mb-2">Resources</h4>
                 <ul>
                     <li><a href="{{route('help')}}">Help Center</a></li>
-                    <li>Associates</li>
+                    <li><a href="{{route('associates')}}">Associates</a></li>
                 </ul>
             </div>
             <div>

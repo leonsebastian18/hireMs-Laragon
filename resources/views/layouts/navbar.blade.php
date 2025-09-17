@@ -52,8 +52,8 @@
           </button>
           <div x-show="openResources" x-transition
                class="absolute md:absolute left-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg py-2 z-50">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Help Center</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Associates</a>
+            <a href="help" class="block px-4 py-2 hover:bg-gray-100">Help Center</a>
+            <a href="associates" class="block px-4 py-2 hover:bg-gray-100">Associates</a>
           </div>
         </li>
 

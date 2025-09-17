@@ -21,7 +21,7 @@
     @include('layouts.navbar')
 
     <!-- Hero -->
-    <section class="bg-gradient-to-r from-pink-50 to-yellow-50 py-20">
+    <section class="bg-gradient-to-r from-blue-50 to-gray-100 py-20">
       <div class="max-w-5xl mx-auto text-center px-6">
         <h1 class="text-4xl lg:text-5xl font-bold text-gray-900">
           Simple, Transparent Pricing
@@ -40,26 +40,26 @@
         <div class="bg-white rounded-2xl shadow-md p-8 border hover:shadow-lg transition">
           <h2 class="text-2xl font-bold text-gray-900">Starter</h2>
           <p class="mt-2 text-gray-600">Perfect for small businesses starting with recruitment</p>
-          <p class="mt-6 text-4xl font-bold text-pink-600">$49<span class="text-lg font-medium text-gray-600">/mo</span></p>
+          <p class="mt-6 text-4xl font-bold text-blue-600">$49<span class="text-lg font-medium text-gray-600">/mo</span></p>
           <ul class="mt-6 space-y-3 text-gray-700">
             <li>✔️ 1 Job posting</li>
             <li>✔️ Basic candidate management</li>
             <li>✔️ Email support</li>
           </ul>
           <a href="#"
-             class="block mt-8 text-center bg-pink-600 text-white font-medium rounded-xl py-3 hover:bg-pink-700 transition">
+             class="block mt-8 text-center bg-blue-600 text-white font-medium rounded-xl py-3 hover:bg-blue-700 transition">
              Get Started
           </a>
         </div>
 
         <!-- Professional Plan -->
-        <div class="bg-white rounded-2xl shadow-lg border-2 border-pink-600 p-8 relative">
-          <span class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-pink-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+        <div class="bg-white rounded-2xl shadow-lg border-2 border-blue-600 p-8 relative">
+          <span class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-full">
             Most Popular
           </span>
           <h2 class="text-2xl font-bold text-gray-900">Professional</h2>
           <p class="mt-2 text-gray-600">Best for growing teams that need flexibility</p>
-          <p class="mt-6 text-4xl font-bold text-pink-600">$149<span class="text-lg font-medium text-gray-600">/mo</span></p>
+          <p class="mt-6 text-4xl font-bold text-blue-600">$149<span class="text-lg font-medium text-gray-600">/mo</span></p>
           <ul class="mt-6 space-y-3 text-gray-700">
             <li>✔️ Up to 10 job postings</li>
             <li>✔️ Advanced candidate management</li>
@@ -67,7 +67,7 @@
             <li>✔️ Priority email & chat support</li>
           </ul>
           <a href="#"
-             class="block mt-8 text-center bg-pink-600 text-white font-medium rounded-xl py-3 hover:bg-pink-700 transition">
+             class="block mt-8 text-center bg-blue-600 text-white font-medium rounded-xl py-3 hover:bg-blue-700 transition">
              Choose Professional
           </a>
         </div>
@@ -76,7 +76,7 @@
         <div class="bg-white rounded-2xl shadow-md p-8 border hover:shadow-lg transition">
           <h2 class="text-2xl font-bold text-gray-900">Enterprise</h2>
           <p class="mt-2 text-gray-600">Custom solutions for large organizations</p>
-          <p class="mt-6 text-4xl font-bold text-pink-600">Custom<span class="text-lg font-medium text-gray-600"> pricing</span></p>
+          <p class="mt-6 text-4xl font-bold text-blue-600">Custom<span class="text-lg font-medium text-gray-600"> pricing</span></p>
           <ul class="mt-6 space-y-3 text-gray-700">
             <li>✔️ Unlimited job postings</li>
             <li>✔️ Dedicated account manager</li>
