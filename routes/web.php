@@ -21,6 +21,7 @@ Route::view('/customers', 'layouts.customers')->name('customers');
 
 Route::view('/price', 'layouts.price')->name('price');
 
+Route::view('/help', 'layouts.help')->name('help');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
