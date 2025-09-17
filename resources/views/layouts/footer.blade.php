@@ -20,7 +20,7 @@
                 <h4 class="font-bold mb-2">Company</h4>
                 <ul>
                     <li><a href="#">Employment</a></li>
-                    <li><a href="#">Customers</a></li>
+                    <li><a href="{{route('customers')}}">Customers</a></li>
                     <li><a href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="{{route('privacy_policy')}}">Privacy Policy</a></li>
                     <li><a href="{{route('cookies')}}">Cookie Policy</a></li>
-                    <li>Safety and security</li>
+                    <li><a href="{{route('safety_security')}}">Safety and security</a></li>
                 </ul>
             </div>
         </div>

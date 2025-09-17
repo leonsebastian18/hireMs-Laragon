@@ -58,7 +58,7 @@
         </li>
 
         <!-- Prices -->
-        <li><a href="#" class="block py-2 hover:opacity-80">Prices</a></li>
+        <li><a class="block py-2 hover:opacity-80" href={{route('price')}} >Prices</a></li>
 
         <!-- Login/Register -->
         @if (Route::has('login'))

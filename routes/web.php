@@ -15,6 +15,10 @@ Route::view('/cookies', 'layouts.cookies')->name('cookies');
 
 Route::view('/privacy', 'layouts.privacy_policy')->name('privacy_policy');
 
+Route::view('/safety', 'layouts.safety_security')->name('safety_security');
+
+Route::view('/customers', 'layouts.customers')->name('customers');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
