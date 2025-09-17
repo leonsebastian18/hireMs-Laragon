@@ -19,6 +19,8 @@ Route::view('/safety', 'layouts.safety_security')->name('safety_security');
 
 Route::view('/customers', 'layouts.customers')->name('customers');
 
+Route::view('/price', 'layouts.price')->name('price');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
