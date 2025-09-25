@@ -34,9 +34,9 @@
           </button>
           <div x-show="openProduct" x-transition
                class="absolute md:absolute left-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg py-2 z-50">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Applicant Tracking System</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">ATS for large companies</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">ATS for SMEs</a>
+            <a href="applicantTrackingSystem" class="block px-4 py-2 hover:bg-gray-100">Applicant Tracking System</a>
+            <a href="aTSforlargecompanies" class="block px-4 py-2 hover:bg-gray-100">ATS for large companies</a>
+            <a href="aTSforSmes" class="block px-4 py-2 hover:bg-gray-100">ATS for SMEs</a>
           </div>
         </li>
 

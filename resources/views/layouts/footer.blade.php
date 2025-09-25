@@ -4,9 +4,9 @@
             <div>
                 <h4 class="font-bold mb-2">Product</h4>
                 <ul>
-                    <li>Applicant Tracking System</li>
-                    <li>ATS for large companies</li>
-                    <li>ATS for SMEs</li>
+                    <li><a href="{{route('applicantTrackingSystem')}}">Applicant Tracking System</a></li>
+                    <li><a href="{{route('aTSforlargecompanies')}}">ATS for large companies</a>ATS for large companies</li>
+                    <li><a href="{{route('aTSforSmes')}}">ATS for SMEs</a></li>
                 </ul>
             </div>
             <div>

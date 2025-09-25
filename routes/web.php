@@ -27,6 +27,14 @@ Route::view('/associates', 'layouts.associates')->name('associates');
 
 Route::view('/employment', 'layouts.employment')->name('employment');
 
+Route::view('/applicantTrackingSystem', 'layouts.applicantTrackingSystem')->name('applicantTrackingSystem');
+
+Route::view('/aTSforlargecompanies', 'layouts.aTSforlargecompanies')->name('aTSforlargecompanies');
+
+Route::view('/aTSforSmes', 'layouts.aTSforSmes')->name('aTSforSmes');
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
