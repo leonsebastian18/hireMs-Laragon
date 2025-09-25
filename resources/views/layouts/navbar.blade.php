@@ -19,7 +19,7 @@
     </button>
 
     <!-- Menú -->
-    <nav :class="{'block': openMenu, 'hidden': !openMenu}" class="absolute md:static top-16 left-0 w-full md:w-auto bg-[#0f172a] md:flex md:space-x-6 md:items-center hidden md:block z-50">
+    <nav :class="{'block': openMenu, 'hidden': !openMenu}" class="absolute md:static top-16 left-0 w-full md:w-auto bg-[#0f172a] md:space-x-6 md:items-center hidden md:block z-50">
       <ul class="flex flex-col md:flex-row md:space-x-6 p-4 md:p-0">
 
         <!-- Dropdown Product -->
