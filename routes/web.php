@@ -25,6 +25,8 @@ Route::view('/help', 'layouts.help')->name('help');
 
 Route::view('/associates', 'layouts.associates')->name('associates');
 
+Route::view('/employment', 'layouts.employment')->name('employment');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
