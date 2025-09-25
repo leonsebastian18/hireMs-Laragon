@@ -16,7 +16,7 @@
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold mb-6">Our Associates</h2>
       <p class="text-lg mb-8">Building stronger connections with trusted partners who share our vision for excellence, innovation, and growth.</p>
-      <a href="#join" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Become an Associate</a>
+      <a href="contact" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Become an Associate</a>
     </div>
   </section>
 
@@ -45,17 +45,17 @@
       <h3 class="text-3xl font-bold text-center mb-12">Meet Some of Our Associates</h3>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white p-6 rounded-lg shadow text-center">
-          <img src="https://via.placeholder.com/150" alt="Associate 1" class="w-24 h-24 mx-auto rounded-full mb-4">
+          <img src="./imagenes/tech.jpg" alt="Associate 1" class="w-48 h-48 mx-auto rounded-full mb-4">
           <h4 class="text-xl font-semibold">Associate One</h4>
           <p class="text-sm text-gray-600">Technology Partner</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow text-center">
-          <img src="https://via.placeholder.com/150" alt="Associate 2" class="w-24 h-24 mx-auto rounded-full mb-4">
+          <img src="./imagenes/logistic.jpg" alt="Associate 2" class="w-48 h-48 mx-auto rounded-full mb-4">
           <h4 class="text-xl font-semibold">Associate Two</h4>
           <p class="text-sm text-gray-600">Logistics Partner</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow text-center">
-          <img src="https://via.placeholder.com/150" alt="Associate 3" class="w-24 h-24 mx-auto rounded-full mb-4">
+          <img src="./imagenes/consulting.jpg" alt="Associate 3" class="w-48 h-48 mx-auto rounded-full mb-4">
           <h4 class="text-xl font-semibold">Associate Three</h4>
           <p class="text-sm text-gray-600">Consulting Partner</p>
         </div>
@@ -67,7 +67,7 @@
   <section id="join" class="py-20 text-center bg-blue-500 text-white">
     <h3 class="text-3xl font-bold mb-6">Join Our Associate Program</h3>
     <p class="mb-8">Collaborate with us to create opportunities, drive growth, and make a lasting impact.</p>
-    <a href="#" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Apply Now</a>
+    <a href="contact" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Apply Now</a>
   </section>
 
   <!-- Footer -->
