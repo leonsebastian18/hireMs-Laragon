@@ -33,12 +33,12 @@
           </p>
         </div>
         <div class="grid grid-cols-3 gap-4">
-          <img src="/images/customers/customer1.jpg" class="rounded-2xl shadow-md" alt="Customer 1">
-          <img src="/images/customers/customer2.jpg" class="rounded-2xl shadow-md" alt="Customer 2">
-          <img src="/images/customers/customer3.jpg" class="rounded-2xl shadow-md" alt="Customer 3">
-          <img src="/images/customers/customer4.jpg" class="rounded-2xl shadow-md" alt="Customer 4">
-          <img src="/images/customers/customer5.jpg" class="rounded-2xl shadow-md" alt="Customer 5">
-          <img src="/images/customers/customer6.jpg" class="rounded-2xl shadow-md" alt="Customer 6">
+          <img src="/imagenes/logo_1.jpg" class="rounded-2xl shadow-md" alt="Customer 1">
+          <img src="/imagenes/logo_2.jpg" class="rounded-2xl shadow-md" alt="Customer 2">
+          <img src="/imagenes/logo_3.jpg" class="rounded-2xl shadow-md h-40" alt="Customer 3">
+          <img src="/imagenes/logo_4.jpg" class="rounded-2xl shadow-md" alt="Customer 4">
+          <img src="/imagenes/logo_5.jpg" class="rounded-2xl shadow-md" alt="Customer 5">
+          <img src="/imagenes/logo_6.jpg" class="rounded-2xl shadow-md" alt="Customer 6">
         </div>
       </div>
     </section>
@@ -50,50 +50,57 @@
           Loved by the most forward-thinking HR teams
         </p>
         <div class="flex flex-wrap justify-center gap-10 grayscale opacity-90">
-          <img src="/images/logos/logo1.png" alt="Logo 1" class="h-10">
-          <img src="/images/logos/logo2.png" alt="Logo 2" class="h-10">
-          <img src="/images/logos/logo3.png" alt="Logo 3" class="h-10">
-          <img src="/images/logos/logo4.png" alt="Logo 4" class="h-10">
-          <img src="/images/logos/logo5.png" alt="Logo 5" class="h-10">
+          <img src="./imagenes/logo1.png" alt="Logo 1" class="h-20">
+          <img src="./imagenes/logo2.png" alt="Logo 2" class="h-20">
+          <img src="./imagenes/logo3.png" alt="Logo 3" class="h-20">
+          <img src="./imagenes/logo4.png" alt="Logo 4" class="h-20">
+          <img src="./imagenes/logo5.png" alt="Logo 5" class="h-20">
         </div>
       </div>
     </section>
 
     <!-- Case Studies -->
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-6 lg:px-12">
-        <h2 class="text-3xl font-bold text-center text-gray-900">Customer Stories</h2>
-        <p class="text-center text-gray-600 mt-3 mb-12">
-          We’re proud to help companies all over the world scale and succeed with Hire.Ms.
-        </p>
+<section class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6 lg:px-12">
+    <h2 class="text-3xl font-bold text-center text-gray-900">Customer Stories</h2>
+    <p class="text-center text-gray-600 mt-3 mb-12">
+      We’re proud to help companies all over the world scale and succeed with Hire.Ms.
+    </p>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <img src="/images/stories/story1.jpg" alt="Story 1" class="rounded-lg mb-4">
-            <h3 class="font-semibold text-lg">How Acme Corp boosts diversity</h3>
-            <p class="text-gray-600 mt-2 text-sm">
-              Acme Corp achieved recognition for fair and inclusive hiring practices by leveraging Hire.Ms.
-            </p>
-          </div>
-
-          <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <img src="/images/stories/story2.jpg" alt="Story 2" class="rounded-lg mb-4">
-            <h3 class="font-semibold text-lg">Reducing turnover in retail</h3>
-            <p class="text-gray-600 mt-2 text-sm">
-              Thanks to Employer Branding powered by Hire.Ms, a leading retail brand achieved one of the lowest turnover rates.
-            </p>
-          </div>
-
-          <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
-            <img src="/images/stories/story3.jpg" alt="Story 3" class="rounded-lg mb-4">
-            <h3 class="font-semibold text-lg">Scaling recruitment globally</h3>
-            <p class="text-gray-600 mt-2 text-sm">
-              TRIGO Group elevated candidate experience and optimized recruitment across multiple countries.
-            </p>
-          </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
+        <div class="w-full h-48 mb-4 overflow-hidden rounded-lg">
+          <img src="/imagenes/story1.jpg" alt="Story 1" class="w-full h-full object-cover">
         </div>
+        <h3 class="font-semibold text-lg">How Acme Corp boosts diversity</h3>
+        <p class="text-gray-600 mt-2 text-sm">
+          Acme Corp achieved recognition for fair and inclusive hiring practices by leveraging Hire.Ms.
+        </p>
       </div>
-    </section>
+
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
+        <div class="w-full h-48 mb-4 overflow-hidden rounded-lg">
+          <img src="/imagenes/story2.jpg" alt="Story 2" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-semibold text-lg">Reducing turnover in retail</h3>
+        <p class="text-gray-600 mt-2 text-sm">
+          Thanks to Employer Branding powered by Hire.Ms, a leading retail brand achieved one of the lowest turnover rates.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition">
+        <div class="w-full h-48 mb-4 overflow-hidden rounded-lg">
+          <img src="/imagenes/story3.jpg" alt="Story 3" class="w-full h-full object-cover">
+        </div>
+        <h3 class="font-semibold text-lg">Scaling recruitment globally</h3>
+        <p class="text-gray-600 mt-2 text-sm">
+          TRIGO Group elevated candidate experience and optimized recruitment across multiple countries.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Metrics -->
     <section class="py-20 bg-gradient-to-r from-blue-50 to-gray-100">
