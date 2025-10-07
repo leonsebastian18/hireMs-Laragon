@@ -30,7 +30,7 @@
     <main class="container mx-auto p-6 text-center">
         <h2 class="text-4xl font-bold mb-6 text-gray-800">One step closer to your star</h2>
         <p class="text-gray-600 mb-4">This system allows you to streamline your recruitment processes, because we know that you always need our stars.</p>
-        <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">Request a demonstration</button>
+        <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600"><a href="contact">Request a demonstration</a></button>
 
         <!-- Imágenes del ATS -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">

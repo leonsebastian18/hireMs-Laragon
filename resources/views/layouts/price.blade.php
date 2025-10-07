@@ -12,7 +12,7 @@
 
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-      @vite(['resources/css/app.css', 'resources/css/atsHire-Ms.css', 'resources/js/app.js', 'resources/js/script.js'])
+      @vite(['resources/css/app.css', 'resources/css/atsHire-Ms.css', 'resources/js/app.js', 'resources/js/price.js'])
     @endif
   </head>
   <body class="antialiased bg-gray-50 text-gray-800">
@@ -46,10 +46,11 @@
             <li>✔️ Basic candidate management</li>
             <li>✔️ Email support</li>
           </ul>
-          <a href="#"
-             class="block mt-8 text-center bg-blue-600 text-white font-medium rounded-xl py-3 hover:bg-blue-700 transition">
-             Get Started
-          </a>
+        <a href="contact"
+            class="plan-button block mt-8 text-center bg-blue-600 text-white font-medium rounded-xl py-3 hover:bg-blue-700 transition"
+            data-plan="Starter">
+                Get Started
+        </a>
         </div>
 
         <!-- Professional Plan -->
@@ -66,10 +67,11 @@
             <li>✔️ Employer branding tools</li>
             <li>✔️ Priority email & chat support</li>
           </ul>
-          <a href="#"
-             class="block mt-8 text-center bg-blue-600 text-white font-medium rounded-xl py-3 hover:bg-blue-700 transition">
-             Choose Professional
-          </a>
+        <a href="contact"
+            class="plan-button block mt-8 text-center bg-blue-600 text-white font-medium rounded-xl py-3 hover:bg-blue-700 transition"
+                data-plan="Professional">
+                Choose Professional
+        </a>
         </div>
 
         <!-- Enterprise Plan -->
@@ -84,10 +86,11 @@
             <li>✔️ API & integrations</li>
             <li>✔️ 24/7 premium support</li>
           </ul>
-          <a href="#"
-             class="block mt-8 text-center bg-gray-900 text-white font-medium rounded-xl py-3 hover:bg-gray-800 transition">
-             Contact Sales
-          </a>
+          <a href="contact"
+            class="plan-button block mt-8 text-center bg-gray-900 text-white font-medium rounded-xl py-3 hover:bg-gray-800 transition"
+            data-plan="Enterprise">
+            Contact Sales
+            </a>
         </div>
 
       </div>
@@ -116,6 +119,8 @@
 
     <!-- Footer -->
     @include('layouts.footer')
+
+<!-- Forzar compilación de clases dinámicas de Tailwind -->
 
   </body>
 </html>
