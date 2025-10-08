@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Applicant Tracking System | Hire.Ms</title>
+    <link rel="icon"  href="../imagenes/favicon.svg" sizes="180x180" alt="favicon"  type="image/svg+xml">
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
