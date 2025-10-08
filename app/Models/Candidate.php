@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Candidate
- * 
+ *
  * @property int $id
  * @property int|null $user_id
  * @property string|null $phone
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $cv
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * 
+ *
  * @property User|null $user
  * @property Collection|Application[] $applications
  *
@@ -35,11 +35,16 @@ class Candidate extends Model
 	];
 
 	protected $fillable = [
-		'user_id',
-		'phone',
-		'address',
-		'cv'
-	];
+    'user_id',
+    'first_name',
+    'last_name',
+    'email',
+    'phone',
+    'address',
+    'position',
+    'cv'
+];
+
 
 	public function user()
 	{

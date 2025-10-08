@@ -4,37 +4,46 @@
 
         <a href="{{ route('candidate.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             + Nuevo Candidato
-        </a>
+       </a>
 
         <table class="w-full mt-6 border border-gray-200 rounded-lg shadow-sm">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="py-2 px-4 text-left">ID</th>
-                    <th class="py-2 px-4 text-left">Teléfono</th>
-                    <th class="py-2 px-4 text-left">Dirección</th>
-                    <th class="py-2 px-4 text-left">CV</th>
-                    <th class="py-2 px-4 text-left">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($candidates as $candidate)
-                    <tr class="border-t">
-                        <td class="py-2 px-4">{{ $candidate->id }}</td>
-                        <td class="py-2 px-4">{{ $candidate->phone }}</td>
-                        <td class="py-2 px-4">{{ $candidate->address }}</td>
-                        <td class="py-2 px-4">{{ $candidate->cv }}</td>
-                        <td class="py-2 px-4 flex gap-2">
-                            <a href="{{ route('candidate.show', $candidate) }}" class="text-blue-500 hover:underline">Ver</a>
-                            <a href="{{ route('candidate.edit', $candidate) }}" class="text-yellow-500 hover:underline">Editar</a>
-                            <form action="{{ route('candidate.destroy', $candidate) }}" method="POST" onsubmit="return confirm('¿Eliminar este candidato?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
+            <thead>
+    <tr class="bg-gray-100 text-left">
+        <th class="py-2 px-4 border-b">Nombre</th>
+        <th class="py-2 px-4 border-b">Apellido</th>
+        <th class="py-2 px-4 border-b">Correo</th>
+        <th class="py-2 px-4 border-b">Teléfono</th>
+        <th class="py-2 px-4 border-b">Posición</th>
+        <th class="py-2 px-4 border-b">CV</th>
+        <th class="py-2 px-4 border-b">Acciones</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach ($candidates as $candidate)
+        <tr>
+            <td class="py-2 px-4 border-b">{{ $candidate->first_name }}</td>
+            <td class="py-2 px-4 border-b">{{ $candidate->last_name }}</td>
+            <td class="py-2 px-4 border-b">{{ $candidate->email }}</td>
+            <td class="py-2 px-4 border-b">{{ $candidate->phone }}</td>
+            <td class="py-2 px-4 border-b">{{ $candidate->position }}</td>
+            <td class="py-2 px-4 border-b">
+                @if($candidate->cv)
+                    <a href="{{ asset('storage/' . $candidate->cv) }}" class="text-blue-600 hover:underline" target="_blank">Ver CV</a>
+                @else
+                    <span class="text-gray-500">Sin archivo</span>
+                @endif
+            </td>
+            <td class="py-2 px-4 border-b">
+                <a href="{{ route('candidate.edit', $candidate) }}" class="text-blue-600 hover:underline">Editar</a>
+                <form action="{{ route('candidate.destroy', $candidate) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-600 hover:underline ml-2">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
         </table>
     </div>
 </x-app-layout>

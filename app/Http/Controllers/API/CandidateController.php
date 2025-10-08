@@ -19,36 +19,51 @@ class CandidateController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $data = $request->validate([
-            'user_id' => 'nullable|exists:users,id',
-            'phone' => 'nullable|string|max:20',
-            'address' => 'nullable|string|max:255',
-            'cv' => 'nullable|string|max:255',
-        ]);
+{
+    $data = $request->validate([
+        'first_name' => 'required|string|max:100',
+        'last_name' => 'required|string|max:100',
+        'email' => 'required|email|unique:candidates,email',
+        'phone' => 'nullable|string|max:20',
+        'address' => 'nullable|string|max:255',
+        'position' => 'nullable|string|max:100',
+        'cv' => 'nullable|file|mimes:pdf|max:2048', // max 2MB
+    ]);
 
-        Candidate::create($data);
-
-        return redirect()->route('candidate.index')->with('success', 'Candidato creado exitosamente.');
+    if ($request->hasFile('cv')) {
+        $data['cv'] = $request->file('cv')->store('cvs', 'public');
     }
+
+    Candidate::create($data);
+
+    return redirect()->route('candidate.index')->with('success', 'Candidato creado correctamente.');
+}
 
     public function edit(Candidate $candidate)
     {
         return view('candidate.edit', compact('candidate'));
     }
 
-    public function update(Request $request, Candidate $candidate)
-    {
-        $data = $request->validate([
-            'phone' => 'nullable|string|max:20',
-            'address' => 'nullable|string|max:255',
-            'cv' => 'nullable|string|max:255',
-        ]);
+  public function update(Request $request, Candidate $candidate)
+{
+    $data = $request->validate([
+        'first_name' => 'required|string|max:100',
+        'last_name' => 'required|string|max:100',
+        'email' => 'required|email|unique:candidates,email,' . $candidate->id,
+        'phone' => 'nullable|string|max:20',
+        'address' => 'nullable|string|max:255',
+        'position' => 'nullable|string|max:100',
+        'cv' => 'nullable|file|mimes:pdf|max:2048',
+    ]);
 
-        $candidate->update($data);
-
-        return redirect()->route('candidate.index')->with('success', 'Candidato actualizado correctamente.');
+    if ($request->hasFile('cv')) {
+        $data['cv'] = $request->file('cv')->store('cvs', 'public');
     }
+
+    $candidate->update($data);
+
+    return redirect()->route('candidate.index')->with('success', 'Candidato actualizado correctamente.');
+}
 
     public function destroy(Candidate $candidate)
     {
