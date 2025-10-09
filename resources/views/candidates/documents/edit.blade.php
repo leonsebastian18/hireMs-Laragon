@@ -2,7 +2,7 @@
    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow mt-10">
     <h2 class="text-2xl font-semibold mb-4">Edit Document</h2>
 
-    <form action="{{ route('documents.update', [$candidate, $document]) }}" method="POST">
+    <form action="{{ route('candidates.documents.update', [$candidate, $document]) }}" method="POST">
         @csrf
         @method('PUT')
 

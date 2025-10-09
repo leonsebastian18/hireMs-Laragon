@@ -2,7 +2,7 @@
     <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow mt-10">
     <h2 class="text-2xl font-semibold mb-4">Add Work Experience</h2>
 
-    <form action="{{ route('experiences.store', $candidate) }}" method="POST">
+    <form action="{{ route('candidates.experiences.store', $candidate) }}" method="POST">
         @csrf
 
         <div class="mb-4">

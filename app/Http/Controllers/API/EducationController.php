@@ -13,13 +13,13 @@ class EducationController extends Controller
         $candidate = Candidate::findOrFail($candidateId);
         $educaciones = $candidate->educaciones;
 
-        return view('education.index', compact('candidate', 'educaciones'));
+        return view('candidates.education.index', compact('candidate', 'educaciones'));
     }
 
     public function create($candidateId)
     {
         $candidate = Candidate::findOrFail($candidateId);
-        return view('education.create', compact('candidate'));
+        return view('candidates.education.create', compact('candidate'));
     }
 
     public function store(Request $request, $candidateId)
@@ -48,7 +48,7 @@ class EducationController extends Controller
         $candidate = Candidate::findOrFail($candidateId);
         $education = Educacion::findOrFail($id);
 
-        return view('education.edit', compact('candidate', 'education'));
+        return view('candidates.education.edit', compact('candidate', 'education'));
     }
 
     public function update(Request $request, $candidateId, $id)

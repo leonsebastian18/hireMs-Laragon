@@ -44,8 +44,8 @@
         @empty
             <p class="text-gray-500">No work experience registered.</p>
         @endforelse
-        <a href="{{ route('documents.create', $candidate) }}" class="text-blue-600 hover:underline">
-            ➕ Add new document
+        <a href="{{ route('candidates.experiences.create', $candidate) }}" class="text-blue-600 hover:underline">
+            ➕ Add new work experience
         </a>
     </div>
 
@@ -60,8 +60,8 @@
         @empty
             <p class="text-gray-500">No education registered.</p>
         @endforelse
-        <a href="{{ route('documents.create', $candidate) }}" class="text-blue-600 hover:underline">
-            ➕ Add new document
+        <a href="{{ route('candidates.education.create', $candidate) }}" class="text-blue-600 hover:underline">
+            ➕ Add new education
         </a>
     </div>
 
@@ -77,8 +77,8 @@
         @empty
             <p class="text-gray-500">No competencies registered.</p>
         @endforelse
-        <a href="{{ route('documents.create', $candidate) }}" class="text-blue-600 hover:underline">
-            ➕ Add new document
+        <a href="{{ route('candidates.competencies.create', $candidate) }}" class="text-blue-600 hover:underline">
+            ➕ Add new competency
         </a>
     </div>
 </div>

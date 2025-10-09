@@ -45,12 +45,14 @@ Route::get('/dashboard', function () {
 
 Route::resource('candidates', CandidateController::class);
 
-Route::prefix('candidates/{candidate}')->group(function () {
-    Route::resource('documentos', DocumentoCandidatoController::class)->except(['show']);
-    Route::resource('experiencias', ExperienciaLaboralController::class)->except(['show']);
-    Route::resource('educaciones', EducationController::class)->except(['show']);
-    Route::resource('competencias', CompetenciaController::class)->except(['show']);
-});
+Route::prefix('candidates/{candidate}')
+    ->as('candidates.')
+    ->group(function () {
+        Route::resource('documents', DocumentoCandidatoController::class)->except(['show']);
+        Route::resource('experiences', ExperienciaLaboralController::class)->except(['show']);
+        Route::resource('education', EducationController::class)->except(['show']);
+        Route::resource('competencies', CompetenciaController::class)->except(['show']);
+    });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

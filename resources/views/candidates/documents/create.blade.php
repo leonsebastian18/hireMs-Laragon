@@ -2,8 +2,8 @@
     <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow mt-10">
         <h2 class="text-2xl font-semibold mb-4">Upload Document</h2>
 
-        <form action="{{ route('documents.store', $candidate) }}" method="POST" enctype="multipart/form-data">
-            @csrf
+       <form action="{{ route('candidates.documents.store', $candidate) }}" method="POST" enctype="multipart/form-data">
+        @csrf
 
             <div class="mb-4">
                 <label class="block mb-1 font-medium">Document Type</label>

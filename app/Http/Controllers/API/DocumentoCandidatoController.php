@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
 use App\Models\Candidate;
 use App\Models\DocumentoCandidato;
@@ -12,12 +13,12 @@ class DocumentoCandidatoController extends Controller
     public function index(Candidate $candidate)
     {
         $documents = $candidate->documentos;
-        return view('documents.index', compact('candidate', 'documents'));
+        return view('candidates.documents.index', compact('candidate', 'documents'));
     }
 
     public function create(Candidate $candidate)
     {
-        return view('documents.create', compact('candidate'));
+        return view('candidates.documents.create', compact('candidate'));
     }
 
     public function store(Request $request, Candidate $candidate)
@@ -41,7 +42,7 @@ class DocumentoCandidatoController extends Controller
 
     public function edit(Candidate $candidate, DocumentoCandidato $document)
     {
-        return view('documents.edit', compact('candidate', 'document'));
+        return view('candidates.documents.edit', compact('candidate', 'document'));
     }
 
     public function update(Request $request, Candidate $candidate, DocumentoCandidato $document)
@@ -63,6 +64,7 @@ class DocumentoCandidatoController extends Controller
         if ($document->ruta && Storage::disk('public')->exists($document->ruta)) {
             Storage::disk('public')->delete($document->ruta);
         }
+
         $document->delete();
 
         return back()->with('success', 'Document deleted successfully.');
