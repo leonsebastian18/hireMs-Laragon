@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,29 +31,49 @@ class Candidate extends Model
 {
 	protected $table = 'candidates';
 
+    use HasFactory;
+
 	protected $casts = [
 		'user_id' => 'int'
 	];
 
-	protected $fillable = [
-    'user_id',
-    'first_name',
-    'last_name',
-    'email',
-    'phone',
-    'address',
-    'position',
-    'cv'
-];
+	 protected $fillable = [
+        'nombre',
+        'apellido',
+        'email',
+        'telefono',
+        'fecha_nacimiento',
+        'genero',
+        'estado_civil',
+        'direccion',
+        'ciudad',
+        'pais',
+        'disponibilidad_inicio',
+        'modalidad_preferida',
+        'expectativa_salarial',
+        'estado',
+    ];
 
 
-	public function user()
-	{
-		return $this->belongsTo(User::class);
-	}
+	// Relaciones
+    public function documentos()
+    {
+        return $this->hasMany(DocumentoCandidato::class, 'id_candidato');
+    }
 
-	public function applications()
-	{
-		return $this->hasMany(Application::class);
-	}
+    public function experiencias()
+    {
+        return $this->hasMany(ExperienciaLaboral::class, 'id_candidato');
+    }
+
+    public function educaciones()
+    {
+        return $this->hasMany(Educacion::class, 'id_candidato');
+    }
+
+    public function competencias()
+    {
+        return $this->belongsToMany(Competencia::class, 'candidato_competencias', 'id_candidato', 'id_competencia')
+                    ->withPivot(['nivel_actual', 'años_experiencia', 'certificacion', 'fecha_ultima_actualizacion']);
+    }
 }

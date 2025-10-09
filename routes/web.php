@@ -1,7 +1,10 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\API\CandidateController;
+use App\Http\Controllers\API\DocumentoCandidatoController;
+use App\Http\Controllers\API\ExperienciaLaboralController;
+use App\Http\Controllers\API\EducationController;
+use App\Http\Controllers\API\CompetenciaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,7 +43,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('candidate', CandidateController::class);
+Route::resource('candidates', CandidateController::class);
+
+Route::prefix('candidates/{candidate}')->group(function () {
+    Route::resource('documentos', DocumentoCandidatoController::class)->except(['show']);
+    Route::resource('experiencias', ExperienciaLaboralController::class)->except(['show']);
+    Route::resource('educaciones', EducationController::class)->except(['show']);
+    Route::resource('competencias', CompetenciaController::class)->except(['show']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
