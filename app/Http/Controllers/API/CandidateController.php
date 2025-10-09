@@ -71,4 +71,9 @@ class CandidateController extends Controller
 
         return redirect()->route('candidate.index')->with('success', 'Candidato eliminado.');
     }
+
+    public function show(Candidate $candidate)
+{
+    return view('candidate.show', compact('candidate'));
+}
 }

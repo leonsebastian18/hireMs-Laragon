@@ -1,21 +1,21 @@
 <x-app-layout>
     <div class="max-w-5xl mx-auto p-6">
-        <h1 class="text-2xl font-bold mb-4">Lista de Candidatos</h1>
+        <h1 class="text-2xl font-bold mb-4">List of candidates</h1>
 
         <a href="{{ route('candidate.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            + Nuevo Candidato
+            + New Candidate
        </a>
 
         <table class="w-full mt-6 border border-gray-200 rounded-lg shadow-sm">
             <thead>
     <tr class="bg-gray-100 text-left">
-        <th class="py-2 px-4 border-b">Nombre</th>
-        <th class="py-2 px-4 border-b">Apellido</th>
-        <th class="py-2 px-4 border-b">Correo</th>
-        <th class="py-2 px-4 border-b">Teléfono</th>
-        <th class="py-2 px-4 border-b">Posición</th>
+        <th class="py-2 px-4 border-b">First name</th>
+        <th class="py-2 px-4 border-b">Last name</th>
+        <th class="py-2 px-4 border-b">Email</th>
+        <th class="py-2 px-4 border-b">Phone</th>
+        <th class="py-2 px-4 border-b">Position</th>
         <th class="py-2 px-4 border-b">CV</th>
-        <th class="py-2 px-4 border-b">Acciones</th>
+        <th class="py-2 px-4 border-b">Actions</th>
     </tr>
 </thead>
 <tbody>
@@ -30,15 +30,16 @@
                 @if($candidate->cv)
                     <a href="{{ asset('storage/' . $candidate->cv) }}" class="text-blue-600 hover:underline" target="_blank">Ver CV</a>
                 @else
-                    <span class="text-gray-500">Sin archivo</span>
+                    <span class="text-gray-500">No file</span>
                 @endif
             </td>
             <td class="py-2 px-4 border-b">
-                <a href="{{ route('candidate.edit', $candidate) }}" class="text-blue-600 hover:underline">Editar</a>
+                <a href="{{ route('candidate.show', $candidate) }}" class="text-green-600 hover:underline mr-2">Show</a>
+                <a href="{{ route('candidate.edit', $candidate) }}" class="text-blue-600 hover:underline mr-2">Edit</a>
                 <form action="{{ route('candidate.destroy', $candidate) }}" method="POST" class="inline">
                     @csrf
                     @method('DELETE')
-                    <button class="text-red-600 hover:underline ml-2">Eliminar</button>
+                    <button class="text-red-600 hover:underline">Eliminate</button>
                 </form>
             </td>
         </tr>
