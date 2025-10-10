@@ -11,12 +11,12 @@ class ExperienciaLaboralController extends Controller
     public function index(Candidate $candidate)
     {
         $experiences = $candidate->experiencias;
-        return view('experiences.index', compact('candidate', 'experiences'));
+        return view('candidates.experiences.index', compact('candidate', 'experiences'));
     }
 
     public function create(Candidate $candidate)
     {
-        return view('experiences.create', compact('candidate'));
+        return view('candidates.experiences.create', compact('candidate'));
     }
 
     public function store(Request $request, Candidate $candidate)
@@ -44,7 +44,7 @@ class ExperienciaLaboralController extends Controller
 
     public function edit(Candidate $candidate, ExperienciaLaboral $experience)
     {
-        return view('experiences.edit', compact('candidate', 'experience'));
+        return view('candidates.experiences.edit', compact('candidate', 'experience'));
     }
 
     public function update(Request $request, Candidate $candidate, ExperienciaLaboral $experience)

@@ -79,7 +79,7 @@ public function update(Request $request, $candidateId, $competenciaId)
         'fecha_ultima_actualizacion' => $validated['fecha_ultima_actualizacion'] ?? now(),
     ]);
 
-    return redirect()->route('candidates.competencias.index', $candidateId)
+    return redirect()->route('competencias.index', $candidateId)
                      ->with('success', 'Competency updated successfully.');
 }
 }

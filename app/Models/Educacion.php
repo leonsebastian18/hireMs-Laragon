@@ -11,7 +11,7 @@ class Educacion extends Model
 
     protected $table = 'educacion';
 
-    protected $fillable = [
+  protected $fillable = [
         'id_candidato',
         'institucion',
         'titulo',
@@ -21,6 +21,12 @@ class Educacion extends Model
         'fecha_graduacion',
         'en_curso',
         'promedio',
+    ];
+
+        protected $casts = [
+        'fecha_inicio' => 'date',
+        'fecha_graduacion' => 'date',
+        'en_curso' => 'boolean',
     ];
 
     public function candidato()

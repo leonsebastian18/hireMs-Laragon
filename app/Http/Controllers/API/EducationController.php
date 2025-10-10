@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Http\Controllers\Controller;
 use App\Models\Educacion;
 use App\Models\Candidate;
@@ -19,7 +20,10 @@ class EducationController extends Controller
     public function create($candidateId)
     {
         $candidate = Candidate::findOrFail($candidateId);
-        return view('candidates.education.create', compact('candidate'));
+        // Pasamos education como null para evitar errores en el form
+        $education = null;
+
+        return view('candidates.education.create', compact('candidate', 'education'));
     }
 
     public function store(Request $request, $candidateId)
@@ -28,19 +32,25 @@ class EducationController extends Controller
             'institucion' => 'required|string|max:255',
             'titulo' => 'required|string|max:255',
             'nivel_educativo' => 'required|string|max:255',
-            'campo_estudio' => 'nullable|string|max:255',
+            'area_estudio' => 'nullable|string|max:255',
             'fecha_inicio' => 'nullable|date',
-            'fecha_fin' => 'nullable|date|after_or_equal:fecha_inicio',
+            'fecha_graduacion' => 'nullable|date|after_or_equal:fecha_inicio',
             'en_curso' => 'boolean',
-            'descripcion' => 'nullable|string',
+            'promedio' => 'nullable|numeric|min:0|max:10',
         ]);
 
         $candidate = Candidate::findOrFail($candidateId);
 
-        $candidate->educaciones()->create($request->all());
+        // Convertir en_curso a boolean correctamente
+        $data = $request->all();
+        $data['en_curso'] = $request->boolean('en_curso');
+        $data['id_candidato'] = $candidateId;
 
-        return redirect()->route('education.index', $candidateId)
-            ->with('success', 'Education record added successfully.');
+        $candidate->educaciones()->create($data);
+
+        return redirect()
+            ->route('candidates.education.index', $candidateId)
+            ->with('success', 'Registro de educación agregado correctamente.');
     }
 
     public function edit($candidateId, $id)
@@ -57,18 +67,24 @@ class EducationController extends Controller
             'institucion' => 'required|string|max:255',
             'titulo' => 'required|string|max:255',
             'nivel_educativo' => 'required|string|max:255',
-            'campo_estudio' => 'nullable|string|max:255',
+            'area_estudio' => 'nullable|string|max:255',
             'fecha_inicio' => 'nullable|date',
-            'fecha_fin' => 'nullable|date|after_or_equal:fecha_inicio',
+            'fecha_graduacion' => 'nullable|date|after_or_equal:fecha_inicio',
             'en_curso' => 'boolean',
-            'descripcion' => 'nullable|string',
+            'promedio' => 'nullable|numeric|min:0|max:10',
         ]);
 
         $education = Educacion::findOrFail($id);
-        $education->update($request->all());
 
-        return redirect()->route('education.index', $candidateId)
-            ->with('success', 'Education record updated successfully.');
+        // Convertir en_curso correctamente (true/false)
+        $data = $request->all();
+        $data['en_curso'] = $request->boolean('en_curso');
+
+        $education->update($data);
+
+        return redirect()
+            ->route('candidates.education.index', $candidateId)
+            ->with('success', 'Registro de educación actualizado correctamente.');
     }
 
     public function destroy($candidateId, $id)
@@ -76,7 +92,8 @@ class EducationController extends Controller
         $education = Educacion::findOrFail($id);
         $education->delete();
 
-        return redirect()->route('education.index', $candidateId)
-            ->with('success', 'Education record deleted successfully.');
+        return redirect()
+            ->route('candidates.education.index', $candidateId)
+            ->with('success', 'Registro de educación eliminado correctamente.');
     }
 }

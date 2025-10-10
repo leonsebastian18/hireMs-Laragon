@@ -19,8 +19,8 @@ class DocumentoCandidato extends Model
         'es_principal',
     ];
 
-    public function candidato()
+      public function candidate()
     {
-        return $this->belongsTo(Candidate::class, 'id_candidato');
+        return $this->belongsTo(Candidate::class, 'ID_Candidato', 'id');
     }
 }

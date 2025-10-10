@@ -51,7 +51,7 @@ Route::prefix('candidates/{candidate}')
         Route::resource('documents', DocumentoCandidatoController::class)->except(['show']);
         Route::resource('experiences', ExperienciaLaboralController::class)->except(['show']);
         Route::resource('education', EducationController::class)->except(['show']);
-        Route::resource('competencies', CompetenciaController::class)->except(['show']);
+        Route::resource('competencias', CompetenciaController::class)->except(['show']);
     });
 
 Route::middleware('auth')->group(function () {

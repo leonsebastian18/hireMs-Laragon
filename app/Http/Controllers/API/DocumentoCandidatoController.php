@@ -24,16 +24,21 @@ class DocumentoCandidatoController extends Controller
     public function store(Request $request, Candidate $candidate)
     {
         $validated = $request->validate([
-            'type' => 'required|string|max:100',
-            'file' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'tipo' => 'required|string|max:100',
+            'archivo' => 'required|file|mimes:pdf,doc,docx|max:5120',
         ]);
 
-        $path = $request->file('file')->store('documents', 'public');
+        // Guardar archivo en storage/app/public/documents
+        $filename = time() . '_' . $request->file('archivo')->getClientOriginalName();
+        $path = $request->file('archivo')->storeAs('documents', $filename, 'public');
 
         DocumentoCandidato::create([
             'id_candidato' => $candidate->id,
-            'tipo' => $validated['type'],
-            'ruta' => $path,
+            'tipo' => $validated['tipo'],
+            'nombre_archivo' => $filename,
+            'url_archivo' => $path,
+            'fecha_subida' => now(),
+            'es_principal' => false,
         ]);
 
         return redirect()->route('candidates.show', $candidate)
@@ -48,11 +53,27 @@ class DocumentoCandidatoController extends Controller
     public function update(Request $request, Candidate $candidate, DocumentoCandidato $document)
     {
         $validated = $request->validate([
-            'type' => 'required|string|max:100',
+            'tipo' => 'required|string|max:100',
+            'archivo' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
         ]);
 
+        $path = $document->url_archivo;
+        $filename = $document->nombre_archivo;
+
+        if ($request->hasFile('archivo')) {
+            // Borrar archivo anterior si existe
+            if ($document->url_archivo && Storage::disk('public')->exists($document->url_archivo)) {
+                Storage::disk('public')->delete($document->url_archivo);
+            }
+
+            $filename = time() . '_' . $request->file('archivo')->getClientOriginalName();
+            $path = $request->file('archivo')->storeAs('documents', $filename, 'public');
+        }
+
         $document->update([
-            'tipo' => $validated['type'],
+            'tipo' => $validated['tipo'],
+            'nombre_archivo' => $filename,
+            'url_archivo' => $path,
         ]);
 
         return redirect()->route('candidates.show', $candidate)
@@ -61,12 +82,13 @@ class DocumentoCandidatoController extends Controller
 
     public function destroy(Candidate $candidate, DocumentoCandidato $document)
     {
-        if ($document->ruta && Storage::disk('public')->exists($document->ruta)) {
-            Storage::disk('public')->delete($document->ruta);
+        if ($document->url_archivo && Storage::disk('public')->exists($document->url_archivo)) {
+            Storage::disk('public')->delete($document->url_archivo);
         }
 
         $document->delete();
 
-        return back()->with('success', 'Document deleted successfully.');
+        return redirect()->route('candidates.show', $candidate)
+            ->with('success', 'Document deleted successfully.');
     }
 }
