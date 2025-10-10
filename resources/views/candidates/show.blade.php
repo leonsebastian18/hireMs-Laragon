@@ -26,7 +26,7 @@
 
     <hr class="my-6">
 
-    {{-- Documentos --}}
+
     {{-- Documentos --}}
 <div class="mb-6">
     <h3 class="text-lg font-semibold mb-2">📄 Documents</h3>
