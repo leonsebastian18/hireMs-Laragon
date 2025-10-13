@@ -21,63 +21,57 @@ class DocumentoCandidatoController extends Controller
         return view('candidates.documents.create', compact('candidate'));
     }
 
-    public function store(Request $request, Candidate $candidate)
-    {
-        $validated = $request->validate([
-            'tipo' => 'required|string|max:100',
-            'archivo' => 'required|file|mimes:pdf,doc,docx|max:5120',
-        ]);
+   public function store(Request $request, Candidate $candidate)
+{
+    $validated = $request->validate([
+        'tipo_documento' => 'required|string|max:100',
+        'nombre_archivo' => 'required|string|max:100',
+        'archivo' => 'required|file|mimes:pdf,doc,docx|max:2048',
+    ]);
 
-        // Guardar archivo en storage/app/public/documents
-        $filename = time() . '_' . $request->file('archivo')->getClientOriginalName();
-        $path = $request->file('archivo')->storeAs('documents', $filename, 'public');
+    $path = $request->file('archivo')->store('documents', 'public');
 
-        DocumentoCandidato::create([
-            'id_candidato' => $candidate->id,
-            'tipo' => $validated['tipo'],
-            'nombre_archivo' => $filename,
-            'url_archivo' => $path,
-            'fecha_subida' => now(),
-            'es_principal' => false,
-        ]);
+    DocumentoCandidato::create([
+        'id_candidato' => $candidate->id,
+        'tipo_documento' => $validated['tipo_documento'],
+        'nombre_archivo' => $validated['nombre_archivo'],
+        'url_archivo' => $path,
+    ]);
 
-        return redirect()->route('candidates.show', $candidate)
-            ->with('success', 'Document uploaded successfully.');
+    return redirect()->route('candidates.show', $candidate)
+        ->with('success', 'Documento subido correctamente.');
+}
+
+public function update(Request $request, Candidate $candidate, DocumentoCandidato $document)
+{
+    $validated = $request->validate([
+        'tipo_documento' => 'required|string|max:100',
+        'nombre_archivo' => 'required|string|max:100',
+        'archivo' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+    ]);
+
+    $data = [
+        'tipo_documento' => $validated['tipo_documento'],
+        'nombre_archivo' => $validated['nombre_archivo'],
+    ];
+
+    if ($request->hasFile('archivo')) {
+        if ($document->url_archivo && Storage::disk('public')->exists($document->url_archivo)) {
+            Storage::disk('public')->delete($document->url_archivo);
+        }
+        $data['url_archivo'] = $request->file('archivo')->store('documents', 'public');
     }
+
+    $document->update($data);
+
+    return redirect()->route('candidates.show', $candidate)
+        ->with('success', 'Documento actualizado correctamente.');
+}
+
 
     public function edit(Candidate $candidate, DocumentoCandidato $document)
     {
         return view('candidates.documents.edit', compact('candidate', 'document'));
-    }
-
-    public function update(Request $request, Candidate $candidate, DocumentoCandidato $document)
-    {
-        $validated = $request->validate([
-            'tipo' => 'required|string|max:100',
-            'archivo' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
-        ]);
-
-        $path = $document->url_archivo;
-        $filename = $document->nombre_archivo;
-
-        if ($request->hasFile('archivo')) {
-            // Borrar archivo anterior si existe
-            if ($document->url_archivo && Storage::disk('public')->exists($document->url_archivo)) {
-                Storage::disk('public')->delete($document->url_archivo);
-            }
-
-            $filename = time() . '_' . $request->file('archivo')->getClientOriginalName();
-            $path = $request->file('archivo')->storeAs('documents', $filename, 'public');
-        }
-
-        $document->update([
-            'tipo' => $validated['tipo'],
-            'nombre_archivo' => $filename,
-            'url_archivo' => $path,
-        ]);
-
-        return redirect()->route('candidates.show', $candidate)
-            ->with('success', 'Document updated successfully.');
     }
 
     public function destroy(Candidate $candidate, DocumentoCandidato $document)
