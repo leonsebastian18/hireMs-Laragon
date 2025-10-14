@@ -70,38 +70,54 @@
        class="text-blue-600 hover:underline">➕ Add new document</a>
 </div>
 
-    {{-- Experiencia laboral --}}
-    <div class="mb-6">
-        <h3 class="text-lg font-semibold mb-2">💼 Work Experience</h3>
-        @forelse ($candidate->experiencias as $exp)
-            <div class="border p-3 rounded mb-3">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <p><strong>{{ $exp->empresa }}</strong> — {{ $exp->cargo }}</p>
-                        <p>{{ $exp->fecha_inicio }} - {{ $exp->fecha_fin ?? 'Present' }}</p>
-                        <p class="text-gray-600">{{ $exp->descripcion }}</p>
-                    </div>
-                    <div class="flex space-x-2">
-                        <a href="{{ route('candidates.experiences.edit', [$candidate->id, $exp->id]) }}"
-                           class="px-3 py-1 bg-yellow-500 text-white rounded-md text-xs hover:bg-yellow-600">Edit</a>
-                        <form action="{{ route('candidates.experiences.destroy', [$candidate->id, $exp->id]) }}"
-                              method="POST" onsubmit="return confirm('Are you sure you want to delete this experience?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                    class="px-3 py-1 bg-red-600 text-white rounded-md text-xs hover:bg-red-700">
-                                Delete
-                            </button>
-                        </form>
+{{-- Experiencia laboral --}}
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3 flex items-center gap-1">💼 Experiencia Laboral</h3>
+            @forelse ($candidate->experiencias as $exp)
+                <div class="border p-3 rounded mb-3">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p><strong>{{ $exp->empresa }}</strong> — {{ $exp->cargo }}</p>
+                            <p class="text-sm text-gray-600">
+                                {{ $exp->fecha_inicio ? $exp->fecha_inicio->format('d/m/Y') : '' }}
+                                –
+                                {{ $exp->fecha_fin ? $exp->fecha_fin->format('d/m/Y') : ($exp->actualmente_trabaja ? 'Actual' : '—') }}
+                            </p>
+                            <p class="text-gray-700 mt-1">{{ $exp->descripcion }}</p>
+
+                            @if($exp->salario)
+                                <p class="text-sm mt-1"><strong>Salario:</strong> ${{ number_format($exp->salario, 2) }}</p>
+                            @endif
+                            @if($exp->logros)
+                                <p class="text-sm mt-1"><strong>Logros:</strong> {{ $exp->logros }}</p>
+                            @endif
+                            @if($exp->referencias)
+                                <p class="text-sm mt-1"><strong>Referencias:</strong> {{ $exp->referencias }}</p>
+                            @endif
+                        </div>
+
+                        <div class="flex space-x-2">
+                            <a href="{{ route('candidates.experiences.edit', [$candidate->id, $exp->id]) }}"
+                               class="px-3 py-1 bg-yellow-500 text-white rounded-md text-xs hover:bg-yellow-600">Editar</a>
+                            <form action="{{ route('candidates.experiences.destroy', [$candidate->id, $exp->id]) }}"
+                                  method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar esta experiencia?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                        class="px-3 py-1 bg-red-600 text-white rounded-md text-xs hover:bg-red-700">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @empty
-            <p class="text-gray-500">No work experience registered.</p>
-        @endforelse
-        <a href="{{ route('candidates.experiences.create', $candidate->id) }}"
-           class="text-blue-600 hover:underline">➕ Add new work experience</a>
-    </div>
+            @empty
+                <p class="text-gray-500">No hay experiencia laboral registrada.</p>
+            @endforelse
+
+            <a href="{{ route('candidates.experiences.create', $candidate->id) }}"
+               class="text-blue-600 hover:underline">➕ Agregar experiencia laboral</a>
+        </div>
 
     {{-- Educación --}}
     <div class="mb-6">

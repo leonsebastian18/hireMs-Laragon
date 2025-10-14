@@ -44,7 +44,7 @@
             <input type="file" name="archivo" class="w-full border rounded p-2 mb-4">
 
             <div class="flex justify-between items-center">
-                <a href="{{ route('candidates.show', $candidate->id) }}" class="text-gray-600 hover:underline">← Return</a>
+                <a href="{{ route('candidates.show', $candidate->id) }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">← Return</a>
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
             </div>
         </form>

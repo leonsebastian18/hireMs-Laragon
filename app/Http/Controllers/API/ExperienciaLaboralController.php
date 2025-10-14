@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class ExperienciaLaboralController extends Controller
 {
-    public function index(Candidate $candidate)
+       public function index(Candidate $candidate)
     {
-        $experiences = $candidate->experiencias;
+        $experiences = ExperienciaLaboral::where('id_candidato', $candidate->id)->get();
+
         return view('candidates.experiences.index', compact('candidate', 'experiences'));
     }
 
@@ -19,27 +20,33 @@ class ExperienciaLaboralController extends Controller
         return view('candidates.experiences.create', compact('candidate'));
     }
 
-    public function store(Request $request, Candidate $candidate)
+    public function store(Request $request, $candidateId)
     {
-        $validated = $request->validate([
-            'company' => 'required|string|max:100',
-            'position' => 'required|string|max:100',
-            'start_date' => 'required|date',
-            'end_date' => 'nullable|date|after_or_equal:start_date',
-            'description' => 'nullable|string|max:500',
+        $candidate = Candidate::findOrFail($candidateId);
+
+        $data = $request->validate([
+            'empresa' => 'required|string|max:100',
+            'cargo' => 'required|string|max:100',
+            'descripcion' => 'nullable|string',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'nullable|date|after_or_equal:fecha_inicio',
+            'actualmente_trabaja' => 'nullable|boolean',
+            'salario' => 'nullable|numeric|min:0',
+            'logros' => 'nullable|string',
+            'referencias' => 'nullable|string',
         ]);
 
-        ExperienciaLaboral::create([
-            'id_candidato' => $candidate->id,
-            'empresa' => $validated['company'],
-            'cargo' => $validated['position'],
-            'fecha_inicio' => $validated['start_date'],
-            'fecha_fin' => $validated['end_date'] ?? null,
-            'descripcion' => $validated['description'] ?? null,
-        ]);
+        // 🔹 Relación correcta con el candidato
+        $data['id_candidato'] = $candidate->id;
+        $data['actualmente_trabaja'] = $request->has('actualmente_trabaja') ? 1 : 0;
+        \Log::info('Guardando experiencia', $data);
 
-        return redirect()->route('candidates.show', $candidate)
-            ->with('success', 'Work experience added successfully.');
+        // 🔹 Guarda la experiencia
+        ExperienciaLaboral::create($data);
+
+        return redirect()
+            ->route('candidates.show', $candidateId)
+            ->with('success', 'Experiencia laboral agregada correctamente.');
     }
 
     public function edit(Candidate $candidate, ExperienciaLaboral $experience)
@@ -50,29 +57,30 @@ class ExperienciaLaboralController extends Controller
     public function update(Request $request, Candidate $candidate, ExperienciaLaboral $experience)
     {
         $validated = $request->validate([
-            'company' => 'required|string|max:100',
-            'position' => 'required|string|max:100',
-            'start_date' => 'required|date',
-            'end_date' => 'nullable|date|after_or_equal:start_date',
-            'description' => 'nullable|string|max:500',
+            'empresa' => 'required|string|max:100',
+            'cargo' => 'required|string|max:80',
+            'descripcion' => 'nullable|string',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'nullable|date|after_or_equal:fecha_inicio',
+            'actualmente_trabaja' => 'nullable|boolean',
+            'salario' => 'nullable|numeric|min:0',
+            'logros' => 'nullable|string',
+            'referencias' => 'nullable|string',
         ]);
 
-        $experience->update([
-            'empresa' => $validated['company'],
-            'cargo' => $validated['position'],
-            'fecha_inicio' => $validated['start_date'],
-            'fecha_fin' => $validated['end_date'] ?? null,
-            'descripcion' => $validated['description'] ?? null,
-        ]);
+        $validated['actualmente_trabaja'] = $request->has('actualmente_trabaja') ? 1 : 0;
+
+        $experience->update($validated);
 
         return redirect()->route('candidates.show', $candidate)
-            ->with('success', 'Experience updated successfully.');
+            ->with('success', 'Experiencia laboral actualizada correctamente.');
     }
 
     public function destroy(Candidate $candidate, ExperienciaLaboral $experience)
     {
         $experience->delete();
 
-        return back()->with('success', 'Experience deleted successfully.');
+        return back()->with('success', 'Experiencia laboral eliminada correctamente.');
     }
 }
+

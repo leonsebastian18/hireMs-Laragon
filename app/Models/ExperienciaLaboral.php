@@ -12,16 +12,23 @@ class ExperienciaLaboral extends Model
     protected $table = 'experiencia_laboral';
 
     protected $fillable = [
-        'id_candidato',
-        'empresa',
-        'cargo',
-        'descripcion',
-        'fecha_inicio',
-        'fecha_fin',
-        'actualmente_trabaja',
-        'salario',
-        'logros',
-        'referencias',
+    'id_candidato',
+    'empresa',
+    'cargo',
+    'descripcion',
+    'fecha_inicio',
+    'fecha_fin',
+    'actualmente_trabaja',
+    'salario',
+    'logros',
+    'referencias',
+];
+
+      protected $casts = [
+        'fecha_inicio' => 'date',
+        'fecha_fin' => 'date',
+        'actualmente_trabaja' => 'boolean',
+        'salario' => 'decimal:2',
     ];
 
     public function candidato()
