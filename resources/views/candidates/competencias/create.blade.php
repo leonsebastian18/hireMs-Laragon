@@ -1,61 +1,57 @@
 <x-app-layout>
-    <div class="max-w-3xl mx-auto mt-10 bg-white shadow rounded-lg p-6">
-    <h1 class="text-2xl font-semibold mb-4">Add Competency</h1>
+    <div class="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-8 mt-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+            Agregar Competencia a {{ $candidate->nombre }}
+        </h2>
 
-    <form action="{{ route('candidates.competencias.store', $candidate->id) }}" method="POST" class="space-y-4">
-        @csrf
+        <form action="{{ route('candidates.competencias.store', $candidate->id) }}" method="POST">
+            @csrf
 
-        <div>
-            <label class="block text-sm font-medium mb-1">Competency</label>
-            <select name="id_competencia" required class="w-full border-gray-300 rounded-lg p-2">
-                <option value="">Select a competency...</option>
-                @foreach($todasCompetencias as $comp)
-                    <option value="{{ $comp->id }}" {{ old('id_competencia') == $comp->id ? 'selected' : '' }}>
-                        {{ $comp->nombre }} ({{ $comp->categoria }})
-                    </option>
-                @endforeach
-            </select>
-            @error('id_competencia') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-                <label class="block text-sm font-medium mb-1">Level</label>
-                <input type="text" name="nivel_actual" value="{{ old('nivel_actual') }}"
-                       class="w-full border-gray-300 rounded-lg p-2" required>
-                @error('nivel_actual') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
+            <div class="mb-4">
+                <label class="block text-gray-700">Nombre</label>
+                <input type="text" name="nombre" value="{{ old('nombre') }}" class="w-full border rounded p-2" required>
             </div>
 
-            <div>
-                <label class="block text-sm font-medium mb-1">Years of experience</label>
-                <input type="number" name="años_experiencia" value="{{ old('años_experiencia', 0) }}"
-                       min="0" class="w-full border-gray-300 rounded-lg p-2" required>
-                @error('años_experiencia') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
+            <div class="mb-4">
+                <label class="block text-gray-700">Descripción</label>
+                <textarea name="descripcion" class="w-full border rounded p-2">{{ old('descripcion') }}</textarea>
             </div>
 
-            <div>
-                <label class="block text-sm font-medium mb-1">Certification (optional)</label>
-                <input type="text" name="certificacion" value="{{ old('certificacion') }}"
-                       class="w-full border-gray-300 rounded-lg p-2">
-                @error('certificacion') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
+            <div class="mb-4">
+                <label class="block text-gray-700">Categoría</label>
+                <select name="categoria" class="w-full border rounded p-2" required>
+                    @foreach ($categorias as $categoria)
+                        <option value="{{ $categoria }}">{{ $categoria }}</option>
+                    @endforeach
+                </select>
             </div>
-        </div>
 
-        <div>
-            <label class="block text-sm font-medium mb-1">Last updated</label>
-            <input type="date" name="fecha_ultima_actualizacion" value="{{ old('fecha_ultima_actualizacion') }}"
-                   class="w-full border-gray-300 rounded-lg p-2">
-            @error('fecha_ultima_actualizacion') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
-        </div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-gray-700">Nivel máximo</label>
+                    <input type="number" name="nivel_maximo" min="1" max="10" class="w-full border rounded p-2">
+                </div>
+                <div>
+                    <label class="block text-gray-700">Nivel actual</label>
+                    <input type="number" name="nivel_actual" min="0" max="10" class="w-full border rounded p-2">
+                </div>
+            </div>
 
-        <div class="flex items-center gap-3 mt-4">
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Add Competency
-            </button>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-gray-700">Años de experiencia</label>
+                    <input type="number" name="años_experiencia" min="0" class="w-full border rounded p-2">
+                </div>
+                <div>
+                    <label class="block text-gray-700">Certificación</label>
+                    <input type="text" name="certificacion" class="w-full border rounded p-2">
+                </div>
+            </div>
 
-            <a href="{{ route('candidates.competencias.index', $candidate->id) }}"
-               class="text-gray-600 hover:underline">Cancel</a>
-        </div>
-    </form>
-</div>
+            <div class="flex justify-between">
+                <a href="{{ route('candidates.show', $candidate->id) }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">← Volver</a>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Guardar</button>
+            </div>
+        </form>
+    </div>
 </x-app-layout>
