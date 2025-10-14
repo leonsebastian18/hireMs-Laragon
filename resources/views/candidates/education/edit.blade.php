@@ -14,12 +14,12 @@
             <div class="flex justify-between pt-6">
                 <a href="{{ route('candidates.show', $candidate->id) }}"
                    class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
-                   ← Volver
+                   ← Return
                 </a>
 
                 <button type="submit"
                         class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 transition">
-                    Actualizar
+                    Update
                 </button>
             </div>
         </form>

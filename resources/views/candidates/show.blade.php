@@ -111,38 +111,42 @@
     </div>
 
     {{-- EDUCATION --}}
-    <div class="mb-10">
-        <h3 class="text-lg font-semibold mb-3 flex items-center gap-1">🎓 Education</h3>
-        @forelse ($candidate->educaciones as $edu)
-            <div class="border p-4 rounded-lg mb-4 bg-gray-50 shadow-sm hover:shadow-md transition">
-                <div class="flex justify-between items-start">
-                    <div class="space-y-1 text-gray-700">
-                        <p class="font-semibold text-gray-900">{{ $edu->titulo }}</p>
-                        <p>{{ $edu->institucion }}</p>
-                        <p class="text-sm text-gray-500">{{ $edu->fecha_inicio }} – {{ $edu->fecha_graduacion ?? 'In progress' }}</p>
-                    </div>
-                    <div class="flex flex-col space-y-2">
-                        <a href="{{ route('candidates.education.edit', [$candidate->id, $edu->id]) }}"
-                           class="px-4 py-1 bg-yellow-500 text-white rounded-md text-xs font-semibold hover:bg-yellow-600 transition">✏️ Edit</a>
-                        <form action="{{ route('candidates.education.destroy', [$candidate->id, $edu->id]) }}"
-                              method="POST" onsubmit="return confirm('Are you sure you want to delete this education record?')">
-                            @csrf @method('DELETE')
-                            <button type="submit"
-                                    class="px-4 py-1 bg-red-600 text-white rounded-md text-xs font-semibold hover:bg-red-700 transition">🗑 Delete</button>
-                        </form>
-                    </div>
+<div class="mb-10">
+    <h3 class="text-lg font-semibold mb-3 flex items-center gap-1">🎓 Education</h3>
+    @forelse ($candidate->educaciones as $edu)
+        <div class="border p-4 rounded-lg mb-4 bg-gray-50 shadow-sm hover:shadow-md transition">
+            <div class="flex justify-between items-start">
+                <div class="space-y-1 text-gray-700">
+                    <p class="font-semibold text-gray-900">{{ $edu->titulo }}</p>
+                    <p><strong>Institution:</strong> {{ $edu->institucion }}</p>
+                    <p><strong>Level:</strong> {{ $edu->nivel_educativo }}</p>
+                    <p><strong>Field of Study:</strong> {{ $edu->area_estudio }}</p>
+                    <p><strong>Start Date:</strong> {{ $edu->fecha_inicio }}</p>
+                    <p><strong>Graduation Date:</strong> {{ $edu->fecha_graduacion ?? 'In progress' }}</p>
+                    <p><strong>Currently Studying:</strong> {{ $edu->en_curso ? 'Yes' : 'No' }}</p>
+                    <p><strong>GPA / Average:</strong> {{ $edu->promedio ?? '-' }}</p>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <a href="{{ route('candidates.education.edit', [$candidate->id, $edu->id]) }}"
+                       class="px-4 py-1 bg-yellow-500 text-white rounded-md text-xs font-semibold hover:bg-yellow-600 transition">✏️ Edit</a>
+                    <form action="{{ route('candidates.education.destroy', [$candidate->id, $edu->id]) }}"
+                          method="POST" onsubmit="return confirm('Are you sure you want to delete this education record?')">
+                        @csrf @method('DELETE')
+                        <button type="submit"
+                                class="px-4 py-1 bg-red-600 text-white rounded-md text-xs font-semibold hover:bg-red-700 transition">🗑 Delete</button>
+                    </form>
                 </div>
             </div>
-        @empty
-            <p class="text-gray-500">No education registered.</p>
-        @endforelse
+        </div>
+    @empty
+        <p class="text-gray-500">No education registered.</p>
+    @endforelse
 
-        <a href="{{ route('candidates.education.create', $candidate->id) }}"
-           class="inline-flex items-center mt-3 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition">
-            ➕ Add new education
-        </a>
-    </div>
-
+    <a href="{{ route('candidates.education.create', $candidate->id) }}"
+       class="inline-flex items-center mt-3 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition">
+        ➕ Add new education
+    </a>
+</div>
     {{-- COMPETENCIES --}}
     <div class="mb-8">
         <h3 class="text-lg font-semibold mb-3 flex items-center gap-1">🧠 Competencies</h3>
