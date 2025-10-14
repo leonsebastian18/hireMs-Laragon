@@ -49,7 +49,7 @@ class EducationController extends Controller
         $candidate->educaciones()->create($data);
 
         return redirect()
-            ->route('candidates.education.index', $candidateId)
+            ->route('candidates.show', $candidateId)
             ->with('success', 'Registro de educación agregado correctamente.');
     }
 
@@ -83,7 +83,7 @@ class EducationController extends Controller
         $education->update($data);
 
         return redirect()
-            ->route('candidates.education.index', $candidateId)
+            ->route('candidates.show', $candidateId)
             ->with('success', 'Registro de educación actualizado correctamente.');
     }
 
@@ -93,7 +93,7 @@ class EducationController extends Controller
         $education->delete();
 
         return redirect()
-            ->route('candidates.education.index', $candidateId)
+            ->route('candidates.show', $candidateId)
             ->with('success', 'Registro de educación eliminado correctamente.');
     }
 }

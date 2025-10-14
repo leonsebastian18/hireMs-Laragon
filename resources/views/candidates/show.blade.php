@@ -72,7 +72,7 @@
 
 {{-- Experiencia laboral --}}
         <div class="mb-8">
-            <h3 class="text-lg font-semibold mb-3 flex items-center gap-1">💼 Experiencia Laboral</h3>
+            <h3 class="text-lg font-semibold mb-3 flex items-center gap-1">💼 Work Experience</h3>
             @forelse ($candidate->experiencias as $exp)
                 <div class="border p-3 rounded mb-3">
                     <div class="flex justify-between items-start">
@@ -81,42 +81,42 @@
                             <p class="text-sm text-gray-600">
                                 {{ $exp->fecha_inicio ? $exp->fecha_inicio->format('d/m/Y') : '' }}
                                 –
-                                {{ $exp->fecha_fin ? $exp->fecha_fin->format('d/m/Y') : ($exp->actualmente_trabaja ? 'Actual' : '—') }}
+                                {{ $exp->fecha_fin ? $exp->fecha_fin->format('d/m/Y') : ($exp->actualmente_trabaja ? 'Present' : '—') }}
                             </p>
                             <p class="text-gray-700 mt-1">{{ $exp->descripcion }}</p>
 
                             @if($exp->salario)
-                                <p class="text-sm mt-1"><strong>Salario:</strong> ${{ number_format($exp->salario, 2) }}</p>
+                                <p class="text-sm mt-1"><strong>Salary:</strong> ${{ number_format($exp->salario, 2) }}</p>
                             @endif
                             @if($exp->logros)
-                                <p class="text-sm mt-1"><strong>Logros:</strong> {{ $exp->logros }}</p>
+                                <p class="text-sm mt-1"><strong>Achievements:</strong> {{ $exp->logros }}</p>
                             @endif
                             @if($exp->referencias)
-                                <p class="text-sm mt-1"><strong>Referencias:</strong> {{ $exp->referencias }}</p>
+                                <p class="text-sm mt-1"><strong>References:</strong> {{ $exp->referencias }}</p>
                             @endif
                         </div>
 
                         <div class="flex space-x-2">
                             <a href="{{ route('candidates.experiences.edit', [$candidate->id, $exp->id]) }}"
-                               class="px-3 py-1 bg-yellow-500 text-white rounded-md text-xs hover:bg-yellow-600">Editar</a>
+                               class="px-3 py-1 bg-yellow-500 text-white rounded-md text-xs hover:bg-yellow-600">Edit</a>
                             <form action="{{ route('candidates.experiences.destroy', [$candidate->id, $exp->id]) }}"
                                   method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar esta experiencia?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
                                         class="px-3 py-1 bg-red-600 text-white rounded-md text-xs hover:bg-red-700">
-                                    Eliminar
+                                    Delete
                                 </button>
                             </form>
                         </div>
                     </div>
                 </div>
             @empty
-                <p class="text-gray-500">No hay experiencia laboral registrada.</p>
+                <p class="text-gray-500">There is no work experience recorded.</p>
             @endforelse
 
             <a href="{{ route('candidates.experiences.create', $candidate->id) }}"
-               class="text-blue-600 hover:underline">➕ Agregar experiencia laboral</a>
+               class="text-blue-600 hover:underline">➕ Add work experience</a>
         </div>
 
     {{-- Educación --}}
@@ -126,7 +126,7 @@
             <div class="border p-3 rounded mb-3 flex justify-between items-center">
                 <div>
                     <p><strong>{{ $edu->titulo }}</strong> — {{ $edu->institucion }}</p>
-                    <p>{{ $edu->fecha_inicio }} - {{ $edu->fecha_graduacion ?? 'Present' }}</p>
+                    <p>{{ $edu->fecha_inicio }} - {{ $edu->fecha_graduacion ?? 'In progress' }}</p>
                 </div>
                 <div class="flex space-x-2">
                     <a href="{{ route('candidates.education.edit', [$candidate->id, $edu->id]) }}"

@@ -37,7 +37,8 @@
         </div>
 
         <div class="mb-4 flex items-center">
-            <input type="checkbox" name="actualmente_trabaja" id="actualmente_trabaja"
+             <input type="hidden" name="actualmente_trabaja" value="0">
+            <input type="checkbox" name="actualmente_trabaja" id="actualmente_trabaja" value="1"
                    {{ old('actualmente_trabaja', $experience->actualmente_trabaja) ? 'checked' : '' }}
                    class="mr-2">
             <label for="actualmente_trabaja" class="text-gray-700">I currently work here</label>

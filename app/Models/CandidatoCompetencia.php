@@ -20,4 +20,15 @@ class CandidatoCompetencia extends Model
         'certificacion',
         'fecha_ultima_actualizacion',
     ];
+
+
+    public function competencia()
+    {
+        return $this->belongsTo(Competencia::class, 'id_competencia');
+    }
+
+    public function candidato()
+    {
+        return $this->belongsTo(Candidate::class, 'id_candidato');
+    }
 }

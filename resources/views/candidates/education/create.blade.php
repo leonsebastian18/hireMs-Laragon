@@ -8,10 +8,14 @@
             @csrf
             @include('candidates.education.form')
 
-            <div class="pt-4">
+            <div class="flex justify-between pt-6">
+                <a href="{{ route('candidates.show', $candidate->id) }}"
+                   class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
+                   ← Return
+                </a>
                 <button type="submit"
-                    class="w-full sm:w-auto px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition">
-                    Save
+                        class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 transition">
+                   Save
                 </button>
             </div>
         </form>
