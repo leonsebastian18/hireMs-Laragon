@@ -18,6 +18,9 @@
                      <x-nav-link :href="route('candidates.index')" :active="request()->routeIs('candidates.index')">
                         {{ __('Candidates') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('gestionEmpresarial.index')" :active="request()->routeIs('gestionEmpresarial.index')">
+                        {{ __('Gestión Empresarial') }}
+                    </x-nav-link>
                 </div>
             </div>
 
