@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\API\CandidateController;
+use App\Http\Controllers\API\EmpresaController;
 use App\Http\Controllers\API\DocumentoCandidatoController;
 use App\Http\Controllers\API\ExperienciaLaboralController;
 use App\Http\Controllers\API\EducationController;
@@ -44,6 +45,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('candidates', CandidateController::class);
+Route::resource('empresas', EmpresaController::class);
 
 Route::prefix('candidates/{candidate}')
     ->as('candidates.')
