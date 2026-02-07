@@ -1,7 +1,11 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\API\CandidateController;
+use App\Http\Controllers\API\UsuarioSistemaController;
 use App\Http\Controllers\API\EmpresaController;
+use App\Http\Controllers\API\DepartamentoController;
+use App\Http\Controllers\API\PermisoController;
+use App\Http\Controllers\API\RolController;
 use App\Http\Controllers\API\DocumentoCandidatoController;
 use App\Http\Controllers\API\ExperienciaLaboralController;
 use App\Http\Controllers\API\EducationController;
@@ -46,6 +50,13 @@ Route::get('/dashboard', function () {
 
 Route::resource('candidates', CandidateController::class);
 Route::resource('empresas', EmpresaController::class);
+Route::resource('permissions', PermisoController::class);
+Route::resource('departments', DepartamentoController::class);
+Route::resource('roles', RolController::class);
+Route::resource('system-users', UsuarioSistemaController::class);
+
+
+
 
 Route::prefix('candidates/{candidate}')
     ->as('candidates.')
@@ -54,6 +65,15 @@ Route::prefix('candidates/{candidate}')
         Route::resource('experiences', ExperienciaLaboralController::class)->except(['show']);
         Route::resource('education', EducationController::class)->except(['show']);
         Route::resource('competencias', CompetenciaController::class)->except(['show']);
+    });
+
+Route::prefix('empresas/{empresa}')
+    ->as('empresas.')
+    ->group(function () {
+        Route::resource('permissions', PermisoController::class)->except(['show']);
+        Route::resource('departments', DepartamentoController::class)->except(['show']);
+        Route::resource('roles', RolController::class)->except(['show']);
+        Route::resource('system-users', UsuarioSistemaController::class)->except(['show']);
     });
 
 Route::middleware('auth')->group(function () {
